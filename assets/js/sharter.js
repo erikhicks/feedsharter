@@ -61,8 +61,9 @@
 		 		});
 				
 		 		$.each(data.posts, function(index, post) {
-					console.log(post['quote-text']);
-		 			sharter.insertShart(post['quote-text'], post['quote-source']);
+		 			if (post['quote-text'] !== 'undefined') {
+						sharter.insertShart(post['quote-text'], post['quote-source']);
+					}
 		 		});
 		
 		 		sharter.showNext();
