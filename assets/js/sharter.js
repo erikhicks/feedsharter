@@ -1,8 +1,8 @@
 (function( sharter, $, undefined ) {
 
 	var sharts = [];
-
 	var currentIndex = 0;
+	var feedUrl = 'http://ohwp.tumblr.com/api/read/json';
 
 	sharter.shartElement = null;
 
@@ -52,14 +52,14 @@
 		console.log('sharter.fillPants()');
 
 		$.ajax({
-		 	url: "http://ohwp.tumblr.com/api/read/json",
+		 	url: feedUrl,
 		 	dataType: 'jsonp',
 		 	jsonpCallback: 'sharterCallback',
 		 	success: function(data, status, xhr) {
 		 		data.posts.sort(function() {
 		 			return 0.5 - Math.random();
 		 		});
-		 		
+
 		 		$.each(data.posts, function(index, post) {
 		 			console.log(post);
 		 			sharter.insertShart(post['quote-text'], post['quote-source']);
