@@ -1,0 +1,38 @@
+html, body {
+	margin:0; padding:0;
+	height:100%;
+	font-family: helvetica;
+}
+
+#floater {
+	float: left;
+	height: 30%;
+}
+
+#content {
+	position: relative;
+	clear: left;
+	width:50%;
+	margin: 0 auto;
+}
+
+.sharts {
+	clear: both;
+	position: relative;
+}
+
+.sharts article {
+	left: 2000px;
+	position: absolute;
+	width: 100%;
+	font-size: 50px;
+	padding-bottom: 50px;
+}
+
+.sharts article header {
+	font-size: 24px;
+	opacity: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}
