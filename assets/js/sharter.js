@@ -7,8 +7,6 @@
 	sharter.shartElement = null;
 
 	sharter.init = function() {
-		console.log('sharter.init()');
-		
 		sharter.shartElement = $('.sharts article')[0];
 
 		fillPants();
@@ -19,19 +17,23 @@
 	};
 
 	sharter.insertShart = function(quote, source) {
-		console.log('insertShart: ' + quote);
-		sharts.push({water: source, solids: quote});
+		sharts.push({author: source, solids: quote});
 	};
 
 	sharter.wipe = function() {
-		$(sharter.shartElement).animate(
-			{left: -2000},
-			1000,
-			'easeInBack',
-			function() {
-				$(sharter.shartElement).css('left','2000px');
-				$(sharter.shartElement).find('header').css('opacity', '0');
-				sharter.showNext();
+		$('.author').animate(
+			{opacity: 0},
+			500, function() {
+					$(sharter.shartElement).animate(
+						{left: -2000, opacity: 0},
+						1000,
+						'easeInBack',
+						function() {
+							$(sharter.shartElement).css('left','2000px');
+							$(sharter.shartElement).find('header').css('opacity', '0');
+							sharter.showNext();
+						}
+					);
 			}
 		);
 	};
@@ -49,8 +51,6 @@
 	// Private, don't look
 
 	function fillPants() {
-		console.log('sharter.fillPants()');
-
 		$.ajax({
 		 	url: feedUrl,
 		 	dataType: 'jsonp',
@@ -59,32 +59,39 @@
 		 		data.posts.sort(function() {
 		 			return 0.5 - Math.random();
 		 		});
-
+				
 		 		$.each(data.posts, function(index, post) {
-		 			console.log(post);
+					console.log(post['quote-text']);
 		 			sharter.insertShart(post['quote-text'], post['quote-source']);
 		 		});
+		
 		 		sharter.showNext();
 		 	}
 		});
 	};
 
 	function showEm() {
-		console.log('sharter.showEm()');
+		var author = sharts[currentIndex].author || 'Anonymous';
 
-		$(sharter.shartElement).find('header').first().html(sharts[currentIndex].water);
+		$('.author').html('&mdash; ' + author);
 		$(sharter.shartElement).find('span').first().html(sharts[currentIndex].solids);
 
 		$(sharter.shartElement).animate(
-			{left: 0},
-			1000,
-			'easeOutBack',
+			{left: 100, opacity: 1.0},
+			500,
+			'easeInQuad',
 			function() {
-				$(sharter.shartElement).find('header').animate(
+				$(sharter.shartElement).animate(
+					{left: 0},
+					6000,
+					function() {
+						sharter.wipe();
+					}
+				);
+				$('.author').animate(
 					{opacity: 1.0},
 					1000
 				);
-				setTimeout("sharter.wipe()", 5000);
 			}
 		);
 	};

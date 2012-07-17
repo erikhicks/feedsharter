@@ -4,6 +4,7 @@ html, body {
 	font-family: helvetica;
 	background-color: #fff;
 	color: #000;
+	overflow: hidden;
 }
 
 #floater {
@@ -14,24 +15,26 @@ html, body {
 #content {
 	position: relative;
 	clear: left;
-	width:50%;
+	width:90%;
 	margin: 0 auto;
 }
 
 .sharts {
 	clear: both;
 	position: relative;
+	height: 300px;
 }
 
 .sharts article {
 	left: 2000px;
+	opacity: 0;
 	position: absolute;
 	width: 100%;
 	font-size: 50px;
 	padding-bottom: 50px;
 }
 
-.sharts article header {
+.author {
 	font-size: 24px;
 	opacity: 0;
 	right: 0;
