@@ -61,7 +61,8 @@
 		 		});
 				
 		 		$.each(data.posts, function(index, post) {
-		 			if (post['quote-text'] !== 'undefined') {
+
+		 			if (post['quote-text'] !== undefined) {
 						sharter.insertShart(post['quote-text'], post['quote-source']);
 					}
 		 		});
