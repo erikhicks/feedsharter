@@ -2,7 +2,7 @@
 
 	var sharts = [];
 	var currentIndex = 0;
-	var feedUrl = 'http://ohwp.tumblr.com/api/read/json';
+	var feedUrl = 'http://ohwp.tumblr.com/api/read/json?num=1000';
 
 	sharter.shartElement = null;
 
