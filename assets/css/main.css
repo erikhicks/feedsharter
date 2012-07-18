@@ -1,7 +1,7 @@
 html, body {
 	margin:0; padding:0;
 	height:100%;
-	font-family: helvetica;
+	font-family: 'Times New Roman';
 	background-color: #000;
 	color: #fff;
 	overflow: hidden;
@@ -13,7 +13,7 @@ a {
 
 #floater {
 	float: left;
-	height: 30%;
+	height: 25%;
 }
 
 #content {
@@ -34,8 +34,22 @@ a {
 	opacity: 0;
 	position: absolute;
 	width: 100%;
-	font-size: 80px;
 	padding-bottom: 50px;
+	font-size: 120px;
+	color: #2d2d2d;
+	line-height: 20px;
+	font-style: italic;
+}
+
+.sharts article span {
+	font-size: 80px;
+	color: #fff;
+	line-height: 80px;
+}
+
+.sharts article em {
+	font-weight: bold;
+	display: inline-block;;
 }
 
 .author {
