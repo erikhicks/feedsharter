@@ -39,13 +39,13 @@
 	};
 
 	sharter.showNext = function() {
+		showEm();
+
 		if (currentIndex < sharts.length - 1) {
 			currentIndex++;
 		} else {
 			currentIndex = 0;
 		}
-
-		showEm();
 	};
 
 	// Private, don't look
@@ -56,12 +56,13 @@
 		 	dataType: 'jsonp',
 		 	jsonpCallback: 'sharterCallback',
 		 	success: function(data, status, xhr) {
-		 		data.posts.sort(function() {
-		 			return 0.5 - Math.random();
-		 		});
+		 		// data.posts.sort(function() {
+		 		// 	return 0.5 - Math.random();
+		 		// });
 				
-		 		$.each(data.posts, function(index, post) {
+				console.log(data.posts);
 
+		 		$.each(data.posts, function(index, post) {
 		 			if (post['quote-text'] !== undefined) {
 						sharter.insertShart(post['quote-text'], post['quote-source']);
 					}
