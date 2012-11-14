@@ -21,7 +21,7 @@
 	};
 
 	sharter.wipe = function() {
-		$('.author').animate(
+		$('.sharts .author').animate(
 			{opacity: 0},
 			500, function() {
 					$(sharter.shartElement).animate(
@@ -56,18 +56,11 @@
 		 	dataType: 'jsonp',
 		 	jsonpCallback: 'sharterCallback',
 		 	success: function(data, status, xhr) {
-		 		// data.posts.sort(function() {
-		 		// 	return 0.5 - Math.random();
-		 		// });
-				
-				console.log(data.posts);
-
 		 		$.each(data.posts, function(index, post) {
 		 			if (post['quote-text'] !== undefined) {
 						sharter.insertShart(post['quote-text'], post['quote-source']);
 					}
 		 		});
-		
 		 		sharter.showNext();
 		 	}
 		});
@@ -76,7 +69,7 @@
 	function showEm() {
 		var author = sharts[currentIndex].author || 'Anonymous';
 
-		$('.author').html('&mdash; ' + author);
+		$('.sharts .author').html('&mdash; ' + author);
 		$(sharter.shartElement).find('span').first().html(sharts[currentIndex].solids);
 
 		$(sharter.shartElement).animate(
@@ -91,7 +84,7 @@
 						sharter.wipe();
 					}
 				);
-				$('.author').animate(
+				$('.sharts .author').animate(
 					{opacity: 1.0},
 					1000
 				);

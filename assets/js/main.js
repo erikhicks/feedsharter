@@ -1,1 +1,4 @@
-$(document).ready(sharter.init());
+$(document).ready( function() {
+  sharter.init();
+  reviewboard.init();
+});
