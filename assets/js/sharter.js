@@ -52,19 +52,20 @@
 
 	function fillPants() {
 		$.ajax({
-		 	url: feedUrl,
-		 	dataType: 'jsonp',
-		 	jsonpCallback: 'sharterCallback',
-		 	success: function(data, status, xhr) {
-		 		$.each(data.posts, function(index, post) {
-		 			if (post['quote-text'] !== undefined) {
+			url: feedUrl,
+			dataType: 'jsonp',
+			jsonpCallback: 'sharterCallback',
+			success: function(data, status, xhr) {
+				$.each(data.posts, function(index, post) {
+					if (post['quote-text'] !== undefined) {
 						sharter.insertShart(post['quote-text'], post['quote-source']);
 					}
-		 		});
-		 		sharter.showNext();
-		 	}
+				});
+				sharts.shuffle();
+				sharter.showNext();
+			}
 		});
-	};
+	}
 
 	function showEm() {
 		var author = sharts[currentIndex].author || 'Anonymous';
@@ -90,6 +91,16 @@
 				);
 			}
 		);
-	};
+	}
 
 }( window.sharter = window.sharter || {}, jQuery));
+
+Array.prototype.shuffle = function () {
+    for (var i = this.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = this[i];
+        this[i] = this[j];
+        this[j] = tmp;
+    }
+    return this;
+};
